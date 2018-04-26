@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="flex flex-column vh-100 bg-{{ bg_color }} black-80">
+  <div class="fl w-100 h-50 pa2 pt6 v-mid">
+    <h1 class="f-6 tc">
+      {{ face}}
+    </h1>
+  </div>
+
+  {% if last_saying %}
+  <div class="fl w-100 pa2">
+    <div class="mw7 center ph4 br2-ns">
+      <span title="{{ last_saying.polarity|floatformat:2 }}" class="code f2 lh-copy">💬 {{ last_saying.text }}</span>
+    </div>
+  </div>
+  {% endif %}
+
+  {# <div class="fl w-100 pa2 tc"> #}
+  {#   <form action=""> #}
+  {#     {% csrf_token %} #}
+  {#     <select name="food"> #}
+  {#       <option value="">-- Feed bear --</option> #}
+  {#       <option value="cake">Cake</option> #}
+  {#       <option value="kebab">Kebab</option> #}
+  {#     </select> #}
+  {#     <button type="submit">Feed</button> #}
+  {#   </form> #}
+  {# </div> #}
+
+  <div class="fl w-100 pa2 tc">
+    <div class="pa4-l">
+      <form method="POST" action="{% url 'sayings_list' %}" class="mw7 center pa4 br2-ns">
+        {% csrf_token %}
+        <fieldset class="cf bn ma0 pa0">
+          <legend class="sans-serif pa0 f5 f4-ns mb3 black-60">Say something</legend>
+          <div class="cf sans-serif">
+            <label class="clip" for="email-address">Saying</label>
+            <input class="f6 f5-l input-reset b--solid fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l" placeholder='Example: "Good bear!"'
+              type="text" name="saying" value="" id="saying" autofocus />
+            <input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l" type="submit" value="Say">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>
+
+{# <div class=""> #}
+{#   <section class="mw7 center"> #}
+{#     <h2 class="sans-serif ph3 ph0-l">Recent</h2> #}
+{#     <div class="pv4 bt bb b--black-10 ph3 ph0-l"> #}
+{#       <div class="flex flex-column flex-row-ns"> #}
+{#         <div class="w-100 w-100-ns pr3-ns order-2 order-1-ns"> #}
+{#           <p class="f6 f5-l lh-copy code"> #}
+{#             &ldquo;Bad boy!&rdquo; #}
+{#           </p> #}
+{#         </div> #}
+{#       </div> #}
+{#       <time class="f7 sans-serif db gray">Nov. 21, 2016</time> #}
+{#     </div> #}
+{#  #}
+{#     <div class="pv4 bt bb b--black-10 ph3 ph0-l"> #}
+{#       <div class="flex flex-column flex-row-ns"> #}
+{#         <div class="w-100 w-100-ns pr3-ns order-2 order-1-ns"> #}
+{#           <p class="f6 f5-l lh-copy code"> #}
+{#             &ldquo;Good boy!&rdquo; #}
+{#           </p> #}
+{#         </div> #}
+{#       </div> #}
+{#       <time class="f7 sans-serif db gray">Nov. 21, 2016</time> #}
+{#     </div> #}
+{#   </section> #}
+{# </div> #}
+{% endblock content %}
