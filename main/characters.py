@@ -46,6 +46,14 @@ class Character:
             return 'lightest-blue'
 
 
+class Classic(Character):
+    neutral = ':-|'
+    very_negative = ":'-("
+    slightly_negative = ':-('
+    slightly_positive = ':-)'
+    very_positive = ':-D'
+
+
 class Bear(Character):
     neutral = 'ʕ •ᴥ• ʔ'
     very_negative = 'ʕ •̀ o •́ ʔ'
