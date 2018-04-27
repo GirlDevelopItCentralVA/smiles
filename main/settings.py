@@ -9,24 +9,25 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import environs
+
+env = environs.Env()
+# Read .env file if present
+try:
+    env.read_env()
+except FileNotFoundError:
+    pass
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'w5zd7(62a9bfenf$m6g*2c3wstr+gh93_pbv=91$m-@zfwbq#n')
+SECRET_KEY = env.str('SECRET_KEY', required=True)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
-
+ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.staticfiles',
@@ -60,31 +61,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+# Sessions
+# Explicitly specify signed_cookies backend so we don't need a database
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

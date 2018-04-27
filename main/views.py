@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from textblob import TextBlob
 
+
 def polarity_to_face(polarity):
     if polarity < -0.5:  # very negative
         return 'ʕ •̀ o •́ ʔ'
@@ -44,7 +45,7 @@ def root(request):
     return render(request, 'index.html', context=context)
 
 
-def sayings_list(request):
+def post_saying(request):
     if request.method == 'POST':
         saying = request.POST['saying']
         blob = TextBlob(saying)
@@ -54,9 +55,4 @@ def sayings_list(request):
             'text': saying,
             'polarity': sentiment.polarity,
         }
-        return redirect('root')
-    elif request.method == 'GET':
-        return render(request, 'index.html')
-    else:
-        # TODO: raise error for method not allowed
-        pass
+    return redirect('root')

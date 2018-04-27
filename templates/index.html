@@ -30,7 +30,7 @@
 
   <div class="fl w-100 pa2 tc">
     <div class="pa4-l">
-      <form method="POST" action="{% url 'sayings_list' %}" class="mw7 center pa4 br2-ns">
+      <form method="POST" action="{% url 'post_saying' %}" class="mw7 center pa4 br2-ns">
         {% csrf_token %}
         <fieldset class="cf bn ma0 pa0">
           <legend class="sans-serif pa0 f5 f4-ns mb3 black-60">Say something</legend>
