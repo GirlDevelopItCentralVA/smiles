@@ -60,3 +60,11 @@ class Bear(Character):
     slightly_negative = 'ʕ •̀ ω •́ ʔ'
     slightly_positive = 'ʕ ᵔᴥᵔ ʔ'
     very_positive = 'ʕ ᵔᴥᵔ ʔ'
+
+
+class Bird(Character):
+    neutral = '(￣Θ￣)'
+    very_negative = '＼( ˋ Θ ´ )／'
+    slightly_negative = '( ˋ Θ ´ )'
+    slightly_positive = '(◉Θ◉)♡'
+    very_positive = 'ヾ(￣◇￣)ノ〃'

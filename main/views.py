@@ -1,10 +1,12 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 
-from main.characters import Bear, Classic
+from main.characters import Classic, Bear, Bird
 
 characters = [
-    Bear,
     Classic,
+    Bear,
+    Bird,
 ]
 
 
@@ -12,8 +14,12 @@ def root(request, character_id=None):
     if character_id:
         if character_id == 'bear':
             character = Bear()
-        else:
+        elif character_id == 'bird':
+            character = Bird()
+        elif character_id == 'classic':
             character = Classic()
+        else:
+            raise Http404('Character not found.')
     else:
         character = Bear()
     last_saying = request.session.get('saying', '')
@@ -33,4 +39,6 @@ def post_saying(request):
     if request.method == 'POST':
         saying = request.POST['saying']
         request.session['saying'] = saying
-    return redirect('root')
+    # Get previous URL
+    referer = request.META.get('HTTP_REFERER')
+    return redirect(referer)
