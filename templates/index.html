@@ -3,15 +3,15 @@
 {% block content %}
 <section class="flex flex-column vh-100 bg-{{ bg_color }} black-80">
   <div class="fl w-100 h-50 pa2 pt6 v-mid">
-    <h1 class="f-6 tc">
-      {{ face}}
+    <h1 class="f-6 tc sans-serif">
+      {{ face }}
     </h1>
   </div>
 
   {% if last_saying %}
   <div class="fl w-100 pa2">
     <div class="mw7 center ph4 br2-ns">
-      <span title="{{ last_saying.polarity|floatformat:2 }}" class="code f2 lh-copy">💬 {{ last_saying.text }}</span>
+      <span title="{{ mood|floatformat:2 }}" class="code f2 lh-copy">💬 {{ last_saying }}</span>
     </div>
   </div>
   {% endif %}
