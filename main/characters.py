@@ -1,7 +1,13 @@
 from textblob import TextBlob
 
 
-class Bear:
+class Character:
+    # Subclasses must override these
+    neutral = None
+    very_negative = None
+    slightly_negative = None
+    slightly_positive = None
+    very_positive = None
 
     def __init__(self):
         self.mood = 0.0
@@ -17,15 +23,15 @@ class Bear:
 
     def get_face(self):
         if self.mood < -0.5:  # very negative
-            return 'ʕ •̀ o •́ ʔ'
+            return self.very_negative
         elif self.mood < -0.3:  # slightly negative
-            return 'ʕ •̀ ω •́ ʔ'
+            return self.slightly_negative
         elif self.mood > 0.5:  # very positive
-            return 'ʕ ᵔᴥᵔ ʔ'
+            return self.very_positive
         elif self.mood > 0.3:  # slightly positive
-            return 'ʕ ᵔᴥᵔ ʔ'
+            return self.slightly_positive
         else:
-            return 'ʕ •ᴥ• ʔ'
+            return self.neutral
 
     def get_color(self):
         if self.mood < -0.5:  # very negative
@@ -38,3 +44,11 @@ class Bear:
             return 'washed-green'
         else:
             return 'lightest-blue'
+
+
+class Bear(Character):
+    neutral = 'ʕ •ᴥ• ʔ'
+    very_negative = 'ʕ •̀ o •́ ʔ'
+    slightly_negative = 'ʕ •̀ ω •́ ʔ'
+    slightly_positive = 'ʕ ᵔᴥᵔ ʔ'
+    very_positive = 'ʕ ᵔᴥᵔ ʔ'
