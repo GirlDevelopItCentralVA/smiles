@@ -1,43 +1,52 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>smiles</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/>
+  </head>
 
-{% block content %}
-<nav class="pa2 pa3-ns sans-serif">
-  <a class="link dim black b f6 f5-ns dib mr3" href="/" title="Home">smiles</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="/classic" title="Classic">Classic</a>
-  <a class="link dim gray    f6 f5-ns dib mr3" href="/bear" title="About">Bear</a>
-</nav>
+  <body>
+    <nav class="pa2 pa3-ns sans-serif">
+      <a class="link dim black b f6 f5-ns dib mr3" href="/" title="Home">smiles</a>
+      <a class="link dim gray    f6 f5-ns dib mr3" href="/classic" title="Classic">Classic</a>
+      <a class="link dim gray    f6 f5-ns dib mr3" href="/bear" title="About">Bear</a>
+    </nav>
 
-<section class="flex flex-column vh-100 bg-{{ bg_color }} black-80">
-  <div class="fl w-100 h-50 pa2 pt6 v-mid">
-    <h1 class="f-6 tc sans-serif">
-      {{ face }}
-    </h1>
-  </div>
+    <section class="flex flex-column vh-100 bg-{{ bg_color }} black-80">
+      <div class="fl w-100 h-50 pa2 pt6 v-mid">
+        <h1 class="f-6 tc sans-serif">
+          {{ face }}
+        </h1>
+      </div>
 
-  {% if last_saying %}
-  <div class="fl w-100 pa2">
-    <div class="mw7 center ph4 br2-ns">
-      <span title="{{ mood|floatformat:2 }}" class="code f2 lh-copy">💬 {{ last_saying }}</span>
-    </div>
-  </div>
-  {% endif %}
+      {% if last_saying %}
+      <div class="fl w-100 pa2">
+        <div class="mw7 center ph4 br2-ns">
+          <span title="{{ mood|floatformat:2 }}" class="code f2 lh-copy">💬 {{ last_saying }}</span>
+        </div>
+      </div>
+      {% endif %}
 
-  <div class="fl w-100 pa2 tc">
-    <div class="pa4-l">
-      <form method="POST" action="{% url 'post_saying' %}" class="mw7 center pa4 br2-ns">
-        {% csrf_token %}
-        <fieldset class="cf bn ma0 pa0">
-          <legend class="sans-serif pa0 f5 f4-ns mb3 black-60">Say something</legend>
-          <div class="cf sans-serif">
-            <label class="clip" for="email-address">Saying</label>
-            <input class="f6 f5-l input-reset b--solid fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l" placeholder='Example: "Good bear!"'
-              type="text" name="saying" value="" id="saying" autofocus />
-            <input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l" type="submit" value="Say">
-          </div>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-</section>
-
-{% endblock content %}
+      <div class="fl w-100 pa2 tc">
+        <div class="pa4-l">
+          <form method="POST" action="{% url 'post_saying' %}" class="mw7 center pa4 br2-ns">
+            {% csrf_token %}
+            <fieldset class="cf bn ma0 pa0">
+              <legend class="sans-serif pa0 f5 f4-ns mb3 black-60">Say something</legend>
+              <div class="cf sans-serif">
+                <label class="clip" for="email-address">Saying</label>
+                <input class="f6 f5-l input-reset b--solid fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l" placeholder='Example: "Good bear!"'
+                  type="text" name="saying" value="" id="saying" autofocus />
+                <input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l" type="submit" value="Say">
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
