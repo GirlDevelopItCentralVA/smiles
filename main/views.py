@@ -2,7 +2,7 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 
 from . import coin
-from main.characters import Classic
+from main.characters import Classic, Bear, Bird
 
 #### Lesson 1: A basic view #####
 
@@ -65,6 +65,10 @@ def character_page(request, character_id=None):
             ##### TODO: Handle different character types #####
             if character_id == 'classic':
                 character = Classic()
+            elif character_id == 'bear':
+                character = Bear()
+            elif character_id == 'bird':
+                character = Bird()
             ##### End #####
             else:
                 raise Http404('Character not found.')

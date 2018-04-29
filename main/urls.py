@@ -19,8 +19,7 @@ urlpatterns = [
     path('hello_path/', views.hello_path),
     path('hello_path/<name>/', views.hello_path),
 
-    ##### CHARACTER VIEWS #####
-    # path('', views.character_page),
-    # path('<character_id>/', views.character_page),
-    ##### END CHARACTER VIEWS #####
+    # Lesson 6
+    path('', views.character_page),
+    path('<character_id>/', views.character_page),
 ]
