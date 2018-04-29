@@ -1,37 +1,39 @@
-from main.characters import Bear
+from main.characters import Character, Classic
 
 
-def test_bear_listen():
-    bear = Bear()
-    bear.listen('good bear!')
-    assert bear.mood > 0.0
-    bear.listen('bad bear!')
-    assert bear.mood < 0.0
-    bear.listen(None)
-    assert bear.mood == 0.0
+def test_listen():
+    c = Character()
+    c.listen('good boy!')
+    assert c.mood > 0.0
+    c.listen('bad boy!')
+    assert c.mood < 0.0
+    c.listen('')
+    assert c.mood == 0.0
+    c.listen(None)
+    assert c.mood == 0.0
 
 
-def test_bear_faces():
-    bear = Bear()
-    assert bear.get_face() == 'ʕ •ᴥ• ʔ'
-    bear.mood = -1.0
-    assert bear.get_face() == 'ʕ •̀ o •́ ʔ'
-    bear.mood = -0.4
-    assert bear.get_face() == 'ʕ •̀ ω •́ ʔ'
-    bear.mood = 0.4
-    assert bear.get_face() == 'ʕ ᵔᴥᵔ ʔ'
-    bear.mood = 1.0
-    assert bear.get_face() == 'ʕ ᵔᴥᵔ ʔ'
+def test_get_color():
+    c = Character()
+    assert c.get_color() == 'lightest-blue'
+    c.mood = -1.0
+    assert c.get_color() == 'dark-red'
+    c.mood = -0.4
+    assert c.get_color() == 'red'
+    c.mood = 0.4
+    assert c.get_color() == 'washed-green'
+    c.mood = 1.0
+    assert c.get_color() == 'green'
 
 
-def test_bear_colors():
-    bear = Bear()
-    assert bear.get_color() == 'lightest-blue'
-    bear.mood = -1.0
-    assert bear.get_color() == 'dark-red'
-    bear.mood = -0.4
-    assert bear.get_color() == 'red'
-    bear.mood = 0.4
-    assert bear.get_color() == 'washed-green'
-    bear.mood = 1.0
-    assert bear.get_color() == 'green'
+def test_classic_faces():
+    c = Classic()
+    assert c.get_face() == ':-|'
+    c.mood = -1.0
+    assert c.get_face() == ":'-("
+    c.mood = -0.4
+    assert c.get_face() == ':-('
+    c.mood = 0.4
+    assert c.get_face() == ':-)'
+    c.mood = 1.0
+    assert c.get_face() == ':-D'
