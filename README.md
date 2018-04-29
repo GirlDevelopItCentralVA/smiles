@@ -14,6 +14,10 @@ This was used for the Girl Develop It (Central VA) Intermediate Python class.
 
 ## What this is not
 
+This app was meant for teaching very specific concepts and is not
+necessarily meant to demonstrate best practices. Furthermore, it
+deliberately omits a few things:
+
 * Does NOT teach databases or ORMs
 * Does NOT go in-depth into Django's APIs
 * Does NOT assume knowledge of HTML/CSS/JS (template file is provided)
@@ -45,6 +49,13 @@ cp .env.example .env
 
 ```
 python manage.py runserver
+```
+
+## Deploying to Heroku
+
+```
+heroku create
+git push heroku master
 ```
 
 ## License
