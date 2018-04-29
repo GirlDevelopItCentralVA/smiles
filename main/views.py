@@ -1,39 +1,23 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 
-from main.characters import Classic, Bear, Bird
+from main.characters import Classic
 
-##### Students would write the code below #####
+##### Write your code here #####
 def hello(request):
-    return HttpResponse('Hello World')
-
-def hello_with_query_param(request):
-    name = request.GET.get('name', 'World')
-    return HttpResponse('Hello ' + name)
-
-def hello_with_template(request):
-    context = {
-        'name': 'World'
-    }
-    return render(request, 'hello.html', context)
+    #### TODO: Your code here #####
+    pass
 
 
-def hello_with_param(request, name='World'):
-    context = {
-        'name': name,
-    }
-    return render(request, 'hello.html', context)
+def coin_flip(request):
+    ##### TODO: Your code here #####
+    return render(request, 'coin.html', context={'text': 'Heads'})
 
-def hello_with_post(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-    else:
-        name = 'World'
-    context = {
-        'name': name,
-    }
-    return render(request, 'hello_with_form.html', context)
-##### End of student's code
+
+def hello_form(request):
+    #### TODO: Your code here #####
+    pass
+##### End #####
 
 
 def character_page(request, character_id=None):
@@ -47,15 +31,11 @@ def character_page(request, character_id=None):
         else:
             return redirect('/')
     else:
-        ##### Student would write the code below
         if character_id:
-            if character_id == 'bear':
-                character = Bear()
-            elif character_id == 'bird':
-                character = Bird()
-            elif character_id == 'classic':
+            ##### TODO: Handle different character types #####
+            if character_id == 'classic':
                 character = Classic()
-        ##### End of students' code
+            ##### End #####
             else:
                 raise Http404('Character not found.')
         else:
