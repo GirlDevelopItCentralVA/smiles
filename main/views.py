@@ -62,7 +62,7 @@ def character_page(request, character_id=None):
             return redirect('/')
     else:
         if character_id:
-            ##### TODO: Handle different character types #####
+            ##### Student's code goes here #####
             if character_id == 'classic':
                 character = Classic()
             elif character_id == 'bear':
