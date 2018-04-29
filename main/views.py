@@ -1,25 +1,55 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 
+from . import coin
 from main.characters import Classic
 
-##### Write your code here #####
-def hello(request):
-    #### TODO: Your code here #####
-    pass
+#### Lesson 1: A basic view #####
 
+# def hello(request):
+#     return HttpResponse('Hello World')
+
+##### Lesson 2: Using query parameters #####
+
+# def hello(request):
+#     name = request.GET.get('name', 'World')
+#     return HttpResponse('Hello ' + name)
+
+
+##### Lesson 3: Using a template #####
+
+def hello(request):
+    name = request.GET.get('name', 'World')
+    return render(request, 'hello.html', context={'name': name})
+
+##### "Let's develop it" (independent practice) #####
 
 def coin_flip(request):
-    ##### TODO: Your code here #####
-    return render(request, 'coin.html', context={'text': 'Heads'})
+    result = coin.flip()
+    if result == 'H':
+        text = 'Heads'
+    else:
+        text = 'Tails'
+    return render(request, 'coin.html', context={'text': text})
 
+
+##### Lesson 4: Handling POST requests #####
 
 def hello_form(request):
-    #### TODO: Your code here #####
-    pass
-##### End #####
+    if request.method == 'POST':
+        name = request.POST['name']
+    else:
+        name = 'World'
+    return render(request, 'hello_with_form.html', context={'name': name})
 
 
+#### Lesson 5: Handling path variables ####
+
+def hello_path(request, name='World'):
+    return render(request, 'hello.html', context={'name': name})
+
+
+#### Lesson 6: Putting it all together #####
 def character_page(request, character_id=None):
     if request.method == 'POST':
         saying = request.POST['saying']
