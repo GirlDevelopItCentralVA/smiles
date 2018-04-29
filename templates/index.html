@@ -10,45 +10,47 @@
   </head>
 
   <body>
-    <section class="flex flex-column vh-100 bg-{{ bg_color }} black-80">
-      <nav class="pa2 pa3-ns sans-serif bg-white">
-        <a class="link dim black b f6 f5-ns dib mr3" href="/" title="Home">smiles</a>
-        <a class="link dim gray    f6 f5-ns dib mr3" href="/classic/" title="Classic">Classic</a>
+    <div class="flex flex-column vh-100 bg-{{ bg_color }} black-80">
+      <nav class="pa2 pa3-ns sans-serif bg-near-white">
+        <a class="link grow black b f6 f5-ns dib mr3" href="/" title="Home">smiles</a>
+        <a class="link grow black-80    f6 f5-ns dib mr3" href="/classic/" title="Classic">Classic</a>
         {# TODO: Uncomment these after you've implemented Bear and Bird #}
-        <a class="link dim gray    f6 f5-ns dib mr3" href="/bear/" title="About">Bear</a>
-        <a class="link dim gray    f6 f5-ns dib mr3" href="/bird/" title="About">Bird</a>
+        <a class="link grow black-80    f6 f5-ns dib mr3" href="/bear/" title="About">Bear</a>
+        <a class="link grow black-80    f6 f5-ns dib mr3" href="/bird/" title="About">Bird</a>
       </nav>
-      <div class="fl w-100 h-50 pa2 pt6 v-mid">
-        <h1 class="f-6 tc sans-serif">
-          {# TODO: Add the face here #}
-          {{ face }}
-        </h1>
-      </div>
-
-      {% if last_saying %}
-      <div class="fl w-100 pa2">
-        <div class="mw7 center ph4 br2-ns">
-          <span title="{{ mood|floatformat:2 }}" class="code f2 lh-copy">💬 {{ last_saying }}</span>
+      <section class="black-80">
+        <div class="fl w-100 h-50 pa2 pt6 v-mid">
+          <h1 class="f-6 tc sans-serif">
+            {# TODO: Add the face here #}
+            {{ face }}
+          </h1>
         </div>
-      </div>
-      {% endif %}
 
-      <div class="fl w-100 pa2 tc">
-        <div class="pa4-l">
-          <form method="POST" action="{% url 'post_saying' %}" class="mw7 center pa4 br2-ns">
-            {% csrf_token %}
-            <fieldset class="cf bn ma0 pa0">
-              <legend class="sans-serif pa0 f5 f4-ns mb3 black-60">Say something</legend>
-              <div class="cf sans-serif">
-                <label class="clip" for="email-address">Saying</label>
-                <input class="f6 f5-l input-reset b--solid fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l" placeholder='Example: "Good day!"'
-                  type="text" name="saying" value="" id="saying" autofocus />
-                <input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l" type="submit" value="Say">
-              </div>
-            </fieldset>
-          </form>
+        {% if last_saying %}
+        <div class="fl w-100 pa2">
+          <div class="mw7 center ph4 br2-ns">
+            <span title="{{ mood|floatformat:2 }}" class="code f2 lh-copy">💬 {{ last_saying }}</span>
+          </div>
         </div>
-      </div>
+        {% endif %}
+
+        <div class="fl w-100 pa2 tc">
+          <div class="pa4-l">
+            <form method="POST" action="" class="mw7 center pa4 br2-ns">
+              {% csrf_token %}
+              <fieldset class="cf bn ma0 pa0">
+                <legend class="sans-serif pa0 f5 f4-ns mb3 black-60">Say something</legend>
+                <div class="cf sans-serif">
+                  <label class="clip" for="email-address">Saying</label>
+                  <input class="f6 f5-l input-reset b--solid fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l" placeholder='Example: "Good day!"'
+                    type="text" name="saying" value="" id="saying" autofocus />
+                  <input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l" type="submit" value="Say">
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
     </section>
+    </div>
   </body>
 </html>

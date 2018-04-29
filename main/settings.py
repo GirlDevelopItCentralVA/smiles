@@ -7,8 +7,6 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
-import os
 import environs
 
 env = environs.Env()
@@ -18,19 +16,14 @@ try:
 except FileNotFoundError:
     pass
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY', required=True)
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.sessions',
-    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -64,18 +57,3 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # Sessions
 # Explicitly specify signed_cookies backend so we don't need a database
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_URL = '/static/'
