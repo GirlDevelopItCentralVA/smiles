@@ -5,7 +5,11 @@ from main.characters import Classic, Bear, Bird
 
 ##### Students would write the code below #####
 def hello(request):
-    return HttpResponse('Hello world!')
+    return HttpResponse('Hello World')
+
+def hello_with_query_param(request):
+    name = request.GET.get('name', 'World')
+    return HttpResponse('Hello ' + name)
 
 def hello_with_template(request):
     context = {
