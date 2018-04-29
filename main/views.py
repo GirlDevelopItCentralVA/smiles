@@ -1,10 +1,38 @@
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 
 from main.characters import Classic, Bear, Bird
 
+##### Students would write the code below #####
+def hello(request):
+    return HttpResponse('Hello world!')
 
-def root(request, character_id=None):
+def hello_with_template(request):
+    context = {
+        'name': 'World'
+    }
+    return render(request, 'hello.html', context)
+
+
+def hello_with_param(request, name='World'):
+    context = {
+        'name': name,
+    }
+    return render(request, 'hello.html', context)
+
+def hello_with_post(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+    else:
+        name = 'World'
+    context = {
+        'name': name,
+    }
+    return render(request, 'hello_with_form.html', context)
+##### End of student's code
+
+
+def character_page(request, character_id=None):
     if request.method == 'POST':
         saying = request.POST['saying']
         # Save the saying on the session
@@ -15,6 +43,7 @@ def root(request, character_id=None):
         else:
             return redirect('/')
     else:
+        ##### Student would write the code below
         if character_id:
             if character_id == 'bear':
                 character = Bear()
@@ -22,10 +51,11 @@ def root(request, character_id=None):
                 character = Bird()
             elif character_id == 'classic':
                 character = Classic()
+        ##### End of students' code
             else:
                 raise Http404('Character not found.')
         else:
-            character = Bear()
+            character = Classic()
         last_saying = request.session.get('saying', '')
         character.listen(last_saying)
         context = {
@@ -36,4 +66,4 @@ def root(request, character_id=None):
             'mood': character.mood,
         }
         request.session['saying'] = None
-        return render(request, 'index.html', context=context)
+        return render(request, 'character.html', context=context)

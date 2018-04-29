@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Hello</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.1/css/tachyons.min.css"/>
+  </head>
+
+  <body>
+    <div class="flex flex-column vh-100 bg-washed-green black-80">
+        <div class="fl w-100 h-50 pa2 pt6 v-mid">
+          <h1 class="f-6 tc sans-serif">
+
+
+            Hello {{ name }}!
+
+          </h1>
+        </div>
+
+        <div class="fl w-100 pa2 tc">
+          <div class="pa4-l">
+            <form method="POST" action="" class="mw7 center pa4 br2-ns">
+              {% csrf_token %}
+              <fieldset class="cf bn ma0 pa0">
+                <div class="cf sans-serif">
+                  <label class="clip" for="name">Name</label>
+                  <input class="f6 f5-l input-reset b--solid fl black-80 bg-white pa3 lh-solid w-100 w-75-m w-80-l" placeholder='What is you name?'
+                    type="text" name="name" value="" id="name" autofocus />
+                  <input class="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l" type="submit" value="POST">
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
