@@ -1,4 +1,10 @@
-from main.characters import Character, Classic
+from main.characters import Classic
+from main import coin
+
+
+def test_coin():
+    result = coin.flip()
+    assert 0, 'todo'
 
 
 def test_classic_faces():
