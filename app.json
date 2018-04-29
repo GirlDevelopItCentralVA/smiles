@@ -1,0 +1,15 @@
+{
+  "name": "smiles",
+  "description": "A small app used to introduce web development with Python",
+  "image": "heroku/python",
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "secret"
+    },
+    "DISABLE_COLLECTSTATIC": {
+      "description": "Disable collectstatic command, since this app doesn't have static files",
+      "value": "1"
+    }
+  }
+}
