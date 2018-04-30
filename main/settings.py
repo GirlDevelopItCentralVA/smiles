@@ -22,16 +22,12 @@ SECRET_KEY = env.str('SECRET_KEY', required=True)
 DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['*']
-INSTALLED_APPS = [
-    'django.contrib.sessions',
-]
+INSTALLED_APPS = []
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -46,14 +42,9 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'main.wsgi.application'
-
-# Sessions
-# Explicitly specify signed_cookies backend so we don't need a database
-SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
