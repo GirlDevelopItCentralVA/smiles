@@ -23,7 +23,6 @@ def hello_form(request):
     ##### TODO: Your code here #####
     return render(request, 'hello_with_form.html', context={'name': 'World'})
 
-
 ##### Lesson 5: Handling path variables #####
 
 def hello_path(request, name):
