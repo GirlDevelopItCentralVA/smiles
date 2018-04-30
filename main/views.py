@@ -38,8 +38,9 @@ def coin_flip(request):
 def hello_form(request):
     if request.method == 'POST':
         name = request.POST['name']
+        return redirect('/hello2/?name=' + name)
     else:
-        name = 'World'
+        name = request.GET.get('name', 'World')
     return render(request, 'hello_with_form.html', context={'name': name})
 
 
