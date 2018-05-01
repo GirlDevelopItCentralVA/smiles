@@ -40,6 +40,12 @@ python manage.py runserver
 
 ## Deploying to Heroku
 
+Pre-requisites:
+
+* You have a [Heroku account](https://signup.heroku.com/signup/dc)
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) is installed
+* The [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) is installed
+
 ```
 heroku create
 git push heroku master
@@ -47,7 +53,7 @@ git push heroku master
 
 ## What this is
 
-A small app used to teach the following concepts:
+A small Django app used to teach the following concepts:
 
 * Object-oriented programming
 * Client-server communication
@@ -56,6 +62,8 @@ A small app used to teach the following concepts:
 * Testing
 
 This is used for [Girl Develop It Central Virginia's](https://www.meetup.com/Girl-Develop-It-CentralVA/) Intermediate Python class.
+
+The accompanying slides for the class are [here](https://gdi-intermediate-python.surge.sh/).
 
 ## What this is not
 
