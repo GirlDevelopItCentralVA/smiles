@@ -1,10 +1,8 @@
 from main import coin
 
-
-def test_flip_loaded():
-    result = coin.flip_loaded()
-    assert result == 'H'
-
 def test_flip():
     result = coin.flip()
-    assert result in ['H', 'T']
+    assert 0, 'TODO'
+
+def test_flip_loaded():
+    assert 0, 'TODO'
