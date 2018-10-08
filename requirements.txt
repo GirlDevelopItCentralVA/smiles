@@ -1,5 +1,5 @@
 Django==2.1.2
 textblob==0.15.1
-environs==2.1.0
+environs==4.0.0
 pytest==3.5.1
 gunicorn==19.9.0
