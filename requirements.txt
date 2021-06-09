@@ -1,4 +1,4 @@
-Django==2.2.18
+Django==2.2.22
 textblob==0.15.3
 environs==9.3.2
 pytest==6.2.4
